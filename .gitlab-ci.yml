@@ -9,11 +9,11 @@ before_script:
   - apt-get update
   - apt-get upgrade
   - apt-get install python3-pip -y
-  - pip3 install pep8 pylint
 
 style:
   stage: style
   script:
+  - pip3 install pep8
   - cd tests
   - python3 style.py
 
@@ -25,8 +25,13 @@ quality:
   - python3 quality.py
 
 build:
-    stage: build
-    script:
-    - pip3 install cx_freeze
-    - python3 setup.py build
-    - ls
+  stage: build
+  script:
+  - pip3 install pyinstaller
+  - pyinstaller -F ./src/main.py
+  - ls
+  artifacts:
+    paths:
+    - public
+    only:
+    - master
