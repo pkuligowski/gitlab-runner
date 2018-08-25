@@ -1,0 +1,24 @@
+image: ubuntu:18.04
+
+stages:
+  - style
+  - quality
+
+before_script:
+  - apt update
+  - apt upgrade
+  - apt install python3-pip -y
+  - pip3 install pep8 pylint
+
+style:
+  stage: style
+  script:
+  - cd tests
+  - python3 style.py
+
+quality:
+  stage: quality
+  script:
+  - pip3 install pylint
+  - cd tests
+  - python3 quality.py
