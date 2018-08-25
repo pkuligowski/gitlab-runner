@@ -32,6 +32,4 @@ build:
   - ls
   artifacts:
     paths:
-    - public
-    only:
-    - master
+    - dist
