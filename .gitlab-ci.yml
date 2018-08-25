@@ -20,7 +20,7 @@ style:
 quality:
   stage: quality
   script:
-  - pip3 install pylint
+  - pip3 install pep8 pylint
   - cd tests
   - python3 quality.py
 
@@ -33,3 +33,5 @@ build:
   artifacts:
     paths:
     - dist
+  only:
+  - master
