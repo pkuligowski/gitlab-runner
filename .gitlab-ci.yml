@@ -3,6 +3,7 @@ image: ubuntu:18.04
 stages:
   - style
   - quality
+  - build
 
 before_script:
   - apt update
@@ -22,3 +23,9 @@ quality:
   - pip3 install pylint
   - cd tests
   - python3 quality.py
+
+build:
+    stage: build
+    script:
+    - pip install cx_freeze
+    - python3 setup.py build
