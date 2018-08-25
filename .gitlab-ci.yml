@@ -6,9 +6,9 @@ stages:
   - build
 
 before_script:
-  - apt update
-  - apt upgrade
-  - apt install python3-pip -y
+  - apt-get update
+  - apt-get upgrade
+  - apt-get install python3-pip -y
   - pip3 install pep8 pylint
 
 style:
@@ -27,5 +27,6 @@ quality:
 build:
     stage: build
     script:
-    - pip install cx_freeze
+    - pip3 install cx_freeze
     - python3 setup.py build
+    - ls
